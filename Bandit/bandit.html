@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bandit Report</title>
+    <style>
+        /* Stil für das Report */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #121212;
+            color: #e0e0e0;
+            margin: 0;
+            padding: 0;
+        }
+
+        #report-container {
+            width: 85%;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #66b3ff;
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            color: #e0e0e0;
+            margin-top: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border: solid #444;
+            border-width: 0 4px 1px 0;
+        }
+
+        th {
+            background-color: #333;
+            color: #ffffff;
+        }
+
+        tr:nth-child(even) {
+            background-color: #1e1e1e;
+        }
+
+        tr:nth-child(odd) {
+            background-color: #262626;
+        }
+
+        .highlight {
+            font-weight: bold;
+            color: #ff4d4d;
+        }
+
+        .file-details {
+            font-size: 0.9em;
+            color: #555;
+        }
+
+        .table-container {
+            margin-bottom: 20px;
+        }
+
+        .issues-row {
+            background-color: #333;
+            border-top: 2px solid #444;
+            font-weight: bolder;
+        }
+
+        .issues-row td {
+            padding: 10px;
+            text-align: center;
+        }
+
+        .issues-row .left-align {
+            text-align: left;
+        }
+
+        .issues-header {
+            background-color: #444;
+            font-weight: bold;
+        }
+
+        .issues-text {
+            color: #ff4d4d;
+        }
+
+        .metrics-row td {
+            border-top: none !important;
+            padding: 12px;
+            text-align: left;
+        }
+
+        .nested-table {
+            width: 100%;
+            margin-top: 10px;
+            border-top: 1px solid #444;
+        }
+
+        .nested-table td {
+            padding: 10px;
+            background-color: #333;
+            color: #e0e0e0;
+        }
+
+        .nested-table th {
+            background-color: #444;
+        }
+    </style>
+</head>
+<body>
+<div id="report-container">
+    <h1>Bandit Security Report</h1>
+
+    <!-- Metrics Summary Table -->
+    <h2>Metrics Summary by File</h2>
+    <div class="table-container">
+        <table>
+            <thead>
+            <tr>
+                <th colspan="2">File</th>
+                <th>CONFIDENCE HIGH</th>
+                <th>CONFIDENCE MEDIUM</th>
+                <th>CONFIDENCE LOW</th>
+                <th>CONFIDENCE UNDEFINED</th>
+                <th>SEVERITY HIGH</th>
+                <th>SEVERITY MEDIUM</th>
+                <th>SEVERITY LOW</th>
+                <th>SEVERITY UNDEFINED</th>
+                <th>LOC</th>
+                <th>NOSEC</th>
+                <th>SKIPPED TESTS</th>
+            </tr>
+            </thead>
+            <tbody id="metrics-tbody">
+            <!-- Metrics rows will be populated here by JavaScript -->
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<script>
+    let statusData = {}; // Dictionary for storing HTML file names as keys and Python file names as values
+
+    // Function to load Bandit report and status data
+    function loadBanditReport() {
+        // First load status.json to create the dictionary
+        fetch('../assets/coverage_status.json') // Path to status.json
+            .then(response => response.json()) // Parse JSON response
+            .then(data => {
+                // Reset statusData to ensure it's empty before populating
+                statusData = {};
+
+                // Populate the statusData dictionary with HTML files as keys and Python file names as values
+                Object.keys(data.files).forEach(file => {
+                    const fileData = data.files[file];
+
+                    // Ensure that both index and url are available
+                    if (fileData.index && fileData.index.url) {
+                        const htmlFileName = fileData.index.url; // HTML file name (URL)
+                        const pythonFileName = fileData.index.file; // The corresponding Python file name
+
+                        // Store the HTML file as the key, and the Python file name as the value
+                        statusData[pythonFileName] = htmlFileName;
+                    }
+                });
+
+                // console.log("Status Data Mapping:", statusData); // Debugging: log the statusData
+
+                // Then load the Bandit report
+                return fetch('../assets/bandit_report.json');
+            })
+            .then(response => response.json()) // Parse the Bandit report JSON
+            .then(banditData => {
+                // Get the tbody element for metrics
+                const metricsTbody = document.getElementById('metrics-tbody');
+
+                // Clear existing content
+                metricsTbody.innerHTML = '';
+
+                // Iterate over files and display metrics
+                Object.keys(banditData.metrics).forEach(file => {
+                    if (file === '_totals') return; // Skip totals
+
+                    const metrics = banditData.metrics[file];
+                    const row = document.createElement('tr');
+                    row.classList.add('metrics-row');
+
+                    // Start the row with file metrics
+                    row.innerHTML = `
+                    <td colspan="2">${file}</td>
+                    <td>${metrics["CONFIDENCE.HIGH"]}</td>
+                    <td>${metrics["CONFIDENCE.MEDIUM"]}</td>
+                    <td>${metrics["CONFIDENCE.LOW"]}</td>
+                    <td>${metrics["CONFIDENCE.UNDEFINED"]}</td>
+                    <td>${metrics["SEVERITY.HIGH"]}</td>
+                    <td>${metrics["SEVERITY.MEDIUM"]}</td>
+                    <td>${metrics["SEVERITY.LOW"]}</td>
+                    <td>${metrics["SEVERITY.UNDEFINED"]}</td>
+                    <td>${metrics.loc}</td>
+                    <td>${metrics.nosec}</td>
+                    <td>${metrics.skipped_tests}</td>
+                `;
+                    metricsTbody.appendChild(row);
+
+                    // Check if there are detected issues for this file
+                    const detectedIssues = banditData.results.filter(issue => issue.filename === file);
+                    detectedIssues.forEach(issue => {
+                        // console.log(file);
+                        // console.log(issue.filename);
+                        const issuesRow = document.createElement('tr');
+                        issuesRow.classList.add('issues-row');
+
+                        // Normalisieren der Pfade, um sicherzustellen, dass sie im gleichen Format vorliegen
+                        const normalizedIssueFilename = issue.filename.replace(/\.\\/g, '');
+
+                        console.log("Normalized Issue Filename:", normalizedIssueFilename);
+
+                        // Get the HTML URL from the statusData dictionary using the normalized Python file name
+                        const htmlFile = statusData[normalizedIssueFilename];
+                        console.log(statusData);
+                        console.log("Found HTML file:", htmlFile); // Debugging: log found HTML file
+
+                        // Populate the issues row with the issue details
+                        issuesRow.innerHTML = `
+                            <td colspan="1" rowspan="2" class="left-align" style="text-align: start; border-right: none;">Linenumber:</td>
+                                                        <td colspan="1" rowspan="2" style="text-align: start;">
+                                <a href="../assets/coverage/${htmlFile}#t${issue.line_number}" target="_self" style="color: orange;">${issue.line_number}</a>
+                            </td>
+                            <td colspan="5" class="issues-text" style="text-align: start">${issue.issue_text}</td>
+                            <td colspan="1">Severity:</td>
+                            <td colspan="1" class="${issue.issue_severity === 'HIGH' ? 'highlight' : ''}">${issue.issue_severity}</td>
+                            <td colspan="1">Confidence:</td>
+                            <td colspan="1">${issue.issue_confidence}</td>
+                            <td colspan="2"> <a href="${issue.more_info}" target="_blank" class="file-details">(More Info)</a></td>
+                        `;
+                        metricsTbody.appendChild(issuesRow); // Add issues row
+
+                        // Add a row for the line number and code snippet
+                        const codeRow = document.createElement('tr');
+                        codeRow.classList.add('issues-row');
+                        codeRow.innerHTML = `
+                            <td colspan="13" class="left-align">
+                                <code style="display: block; white-space: pre-wrap;"># Found here: -> ${issue.filename}\n${issue.code}</code>
+                            </td>
+                        `;
+                        metricsTbody.appendChild(codeRow); // Add code row
+                    });
+                });
+            })
+            .catch(error => {
+                console.error("Error loading the report:", error);
+                const metricsTbody = document.getElementById('metrics-tbody');
+                metricsTbody.innerHTML = '<tr><td colspan="13">Error loading the report</td></tr>';
+            });
+    }
+
+    // Load the report when the page loads
+    window.onload = loadBanditReport;
+
+</script>
+
+</body>
+</html>

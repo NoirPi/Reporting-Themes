@@ -1,0 +1,314 @@
+{
+  "note": "This file is an internal implementation detail to speed up HTML report generation. Its format can change at any time. You might be looking for the JSON report: https://coverage.rtfd.io/cmd.html#cmd-json",
+  "format": 5,
+  "version": "7.6.4",
+  "globals": "e6faed7e94037e87a9e4d76b810c8687",
+  "files": {
+    "z_868315620fd10393_routes_auth_py": {
+      "hash": "fd39cc7bc9af6f52e3471c1e06acf216",
+      "index": {
+        "url": "z_868315620fd10393_routes_auth_py.html",
+        "file": "api\\v1\\endpoints\\routes_auth.py",
+        "description": "",
+        "nums": {
+          "precision": 2,
+          "n_files": 1,
+          "n_statements": 104,
+          "n_excluded": 1,
+          "n_missing": 9,
+          "n_branches": 18,
+          "n_partial_branches": 5,
+          "n_missing_branches": 5
+        }
+      }
+    },
+    "z_868315620fd10393_routes_dashboard_py": {
+      "hash": "f13b1abf2cab5838cc3e618e2e52815a",
+      "index": {
+        "url": "z_868315620fd10393_routes_dashboard_py.html",
+        "file": "api\\v1\\endpoints\\routes_dashboard.py",
+        "description": "",
+        "nums": {
+          "precision": 2,
+          "n_files": 1,
+          "n_statements": 62,
+          "n_excluded": 0,
+          "n_missing": 6,
+          "n_branches": 14,
+          "n_partial_branches": 2,
+          "n_missing_branches": 4
+        }
+      }
+    },
+    "z_868315620fd10393_routes_peer_py": {
+      "hash": "f5a19574b50d68d806997012b26fbc43",
+      "index": {
+        "url": "z_868315620fd10393_routes_peer_py.html",
+        "file": "api\\v1\\endpoints\\routes_peer.py",
+        "description": "",
+        "nums": {
+          "precision": 2,
+          "n_files": 1,
+          "n_statements": 82,
+          "n_excluded": 0,
+          "n_missing": 1,
+          "n_branches": 16,
+          "n_partial_branches": 2,
+          "n_missing_branches": 2
+        }
+      }
+    },
+    "z_868315620fd10393_routes_users_py": {
+      "hash": "13dab8b1a30284e36e26d628cf13dba4",
+      "index": {
+        "url": "z_868315620fd10393_routes_users_py.html",
+        "file": "api\\v1\\endpoints\\routes_users.py",
+        "description": "",
+        "nums": {
+          "precision": 2,
+          "n_files": 1,
+          "n_statements": 64,
+          "n_excluded": 0,
+          "n_missing": 24,
+          "n_branches": 18,
+          "n_partial_branches": 3,
+          "n_missing_branches": 13
+        }
+      }
+    },
+    "z_868315620fd10393_routes_wireguard_py": {
+      "hash": "99ca9f8a93686b74a7f420b2335ac6d4",
+      "index": {
+        "url": "z_868315620fd10393_routes_wireguard_py.html",
+        "file": "api\\v1\\endpoints\\routes_wireguard.py",
+        "description": "",
+        "nums": {
+          "precision": 2,
+          "n_files": 1,
+          "n_statements": 84,
+          "n_excluded": 0,
+          "n_missing": 7,
+          "n_branches": 16,
+          "n_partial_branches": 3,
+          "n_missing_branches": 3
+        }
+      }
+    },
+    "z_9b29dd34b81637e5_dashboard_py": {
+      "hash": "e93dd7ed4a5d15d9fd80f9d7666ff46c",
+      "index": {
+        "url": "z_9b29dd34b81637e5_dashboard_py.html",
+        "file": "core\\schemas\\dashboard.py",
+        "description": "",
+        "nums": {
+          "precision": 2,
+          "n_files": 1,
+          "n_statements": 25,
+          "n_excluded": 0,
+          "n_missing": 0,
+          "n_branches": 0,
+          "n_partial_branches": 0,
+          "n_missing_branches": 0
+        }
+      }
+    },
+    "z_9b29dd34b81637e5_peer_py": {
+      "hash": "202a73030c23712d0cc4ace3ce57c025",
+      "index": {
+        "url": "z_9b29dd34b81637e5_peer_py.html",
+        "file": "core\\schemas\\peer.py",
+        "description": "",
+        "nums": {
+          "precision": 2,
+          "n_files": 1,
+          "n_statements": 51,
+          "n_excluded": 0,
+          "n_missing": 0,
+          "n_branches": 0,
+          "n_partial_branches": 0,
+          "n_missing_branches": 0
+        }
+      }
+    },
+    "z_9b29dd34b81637e5_user_py": {
+      "hash": "a1a42b623c1ee4846c2665e77f8edcf0",
+      "index": {
+        "url": "z_9b29dd34b81637e5_user_py.html",
+        "file": "core\\schemas\\user.py",
+        "description": "",
+        "nums": {
+          "precision": 2,
+          "n_files": 1,
+          "n_statements": 63,
+          "n_excluded": 0,
+          "n_missing": 1,
+          "n_branches": 2,
+          "n_partial_branches": 1,
+          "n_missing_branches": 1
+        }
+      }
+    },
+    "z_9b29dd34b81637e5_wireguard_config_py": {
+      "hash": "1307ab77b0eb71a51fc7d8089be7f043",
+      "index": {
+        "url": "z_9b29dd34b81637e5_wireguard_config_py.html",
+        "file": "core\\schemas\\wireguard_config.py",
+        "description": "",
+        "nums": {
+          "precision": 2,
+          "n_files": 1,
+          "n_statements": 26,
+          "n_excluded": 0,
+          "n_missing": 0,
+          "n_branches": 0,
+          "n_partial_branches": 0,
+          "n_missing_branches": 0
+        }
+      }
+    },
+    "z_57760688d1f824db_secrets_py": {
+      "hash": "384f58db9e2008f9166e5dbf7c941be3",
+      "index": {
+        "url": "z_57760688d1f824db_secrets_py.html",
+        "file": "core\\secrets.py",
+        "description": "",
+        "nums": {
+          "precision": 2,
+          "n_files": 1,
+          "n_statements": 11,
+          "n_excluded": 0,
+          "n_missing": 0,
+          "n_branches": 0,
+          "n_partial_branches": 0,
+          "n_missing_branches": 0
+        }
+      }
+    },
+    "z_57760688d1f824db_security_py": {
+      "hash": "8ce314d77bc29f22beb186d1f9d10400",
+      "index": {
+        "url": "z_57760688d1f824db_security_py.html",
+        "file": "core\\security.py",
+        "description": "",
+        "nums": {
+          "precision": 2,
+          "n_files": 1,
+          "n_statements": 23,
+          "n_excluded": 0,
+          "n_missing": 3,
+          "n_branches": 4,
+          "n_partial_branches": 1,
+          "n_missing_branches": 1
+        }
+      }
+    },
+    "z_1f4cdc73c39a6604_database_session_py": {
+      "hash": "d7ddaf795215988764955f7c14e9dfd3",
+      "index": {
+        "url": "z_1f4cdc73c39a6604_database_session_py.html",
+        "file": "db\\database_session.py",
+        "description": "",
+        "nums": {
+          "precision": 2,
+          "n_files": 1,
+          "n_statements": 19,
+          "n_excluded": 3,
+          "n_missing": 0,
+          "n_branches": 0,
+          "n_partial_branches": 0,
+          "n_missing_branches": 0
+        }
+      }
+    },
+    "z_235226803344ed41_dashboard_py": {
+      "hash": "8a190c6d961fd503f77d3997b3f51158",
+      "index": {
+        "url": "z_235226803344ed41_dashboard_py.html",
+        "file": "db\\models\\dashboard.py",
+        "description": "",
+        "nums": {
+          "precision": 2,
+          "n_files": 1,
+          "n_statements": 50,
+          "n_excluded": 0,
+          "n_missing": 6,
+          "n_branches": 2,
+          "n_partial_branches": 0,
+          "n_missing_branches": 2
+        }
+      }
+    },
+    "z_235226803344ed41_peer_py": {
+      "hash": "4862f259d6a807aa499a5cef90ce4aab",
+      "index": {
+        "url": "z_235226803344ed41_peer_py.html",
+        "file": "db\\models\\peer.py",
+        "description": "",
+        "nums": {
+          "precision": 2,
+          "n_files": 1,
+          "n_statements": 67,
+          "n_excluded": 0,
+          "n_missing": 5,
+          "n_branches": 4,
+          "n_partial_branches": 2,
+          "n_missing_branches": 2
+        }
+      }
+    },
+    "z_235226803344ed41_user_py": {
+      "hash": "1d6788b3aa9f3b34c67580d2aa82cad7",
+      "index": {
+        "url": "z_235226803344ed41_user_py.html",
+        "file": "db\\models\\user.py",
+        "description": "",
+        "nums": {
+          "precision": 2,
+          "n_files": 1,
+          "n_statements": 78,
+          "n_excluded": 1,
+          "n_missing": 13,
+          "n_branches": 0,
+          "n_partial_branches": 0,
+          "n_missing_branches": 0
+        }
+      }
+    },
+    "z_235226803344ed41_wireguard_config_py": {
+      "hash": "e396e134887fd40e293a95f0825a2575",
+      "index": {
+        "url": "z_235226803344ed41_wireguard_config_py.html",
+        "file": "db\\models\\wireguard_config.py",
+        "description": "",
+        "nums": {
+          "precision": 2,
+          "n_files": 1,
+          "n_statements": 40,
+          "n_excluded": 0,
+          "n_missing": 4,
+          "n_branches": 2,
+          "n_partial_branches": 0,
+          "n_missing_branches": 2
+        }
+      }
+    },
+    "z_de3833460954761d_token_service_py": {
+      "hash": "389836a2c9066105e8b892421acdc7d7",
+      "index": {
+        "url": "z_de3833460954761d_token_service_py.html",
+        "file": "services\\token_service.py",
+        "description": "",
+        "nums": {
+          "precision": 2,
+          "n_files": 1,
+          "n_statements": 40,
+          "n_excluded": 0,
+          "n_missing": 9,
+          "n_branches": 0,
+          "n_partial_branches": 0,
+          "n_missing_branches": 0
+        }
+      }
+    }
+  }
+}

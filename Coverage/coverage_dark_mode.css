@@ -1,0 +1,221 @@
+/* Basic body and typography */
+body {
+    font-size: 1rem;
+    background-color: #f5f5f5;
+    color: #333;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Dark mode styling */
+@media (prefers-color-scheme: dark) {
+    body {
+        background-color: #121212;
+        color: #e0e0e0;
+    }
+
+    #source {
+        width: 85%;
+        margin: 0 auto;
+    }
+
+    #index {
+        width: 85%;
+        margin: 0 auto !important;
+        color: white;
+    }
+
+    header, footer, table, #filter_container #filter, #source p, #index table.index {
+        background-color: #1e1e1e;
+    }
+
+    header button, footer .content {
+        background-color: #333;
+        color: #e0e0e0;
+    }
+
+    header button.run.show_run {
+        border: 2px solid #66BB6A;
+    }
+
+    header button.mis.show_mis {
+        border: 2px solid #EF9A9A;
+    }
+
+    header button.exc.show_exc {
+        border: 2px solid #FFCC80;
+    }
+
+    header button.par.show_par {
+        border: 2px solid #FFF176;
+    }
+
+    #source p .n.highlight {
+        background-color: #FFEB3B;
+    }
+
+    #source p .t:hover, #source p .r .annotate.long {
+        background: rgba(0, 0, 0, 0.7);
+        color: white;
+    }
+
+    /* Border color and hover adjustments */
+    #source p.mis.show_mis .t {
+        background-color: #ff1e33; /* Pastellrot für 'mis' */
+        color: white;
+        font-weight: bold;
+    }
+
+    #source p.run.show_run .t {
+        background-color: #70805a; /* Pastellgrün für 'run' */
+        color: white;
+    }
+
+    #source p.exc.show_exc .t {
+        background-color: rgb(81 78 78 / 73%);
+        color: white;
+        font-style: italic;
+    }
+
+    #source p.par.show_par .t {
+        background: #650;
+        color: white;
+        font-weight: bold;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 1em;
+    }
+
+    th, td {
+        padding: 12px 16px;
+        text-align: left;
+        border-bottom: 1px solid rgba(221, 221, 221, 0.12);
+        color: white;
+    }
+
+    th {
+        font-weight: 600;
+        background-color: #1c1e1c; /* Pastellgrün für Header */
+        color: #333;
+        font-size: 1.1rem;
+    }
+
+    td {
+        background-color: rgba(42, 42, 58, 0.5);
+    }
+
+    tr:hover {
+        background-color: #F1F1F1;
+    }
+
+    th:hover {
+        background-color: #DCE775; /* Pastellgelb für Header Hover */
+    }
+
+    tr.region:hover {
+        background-color: #FFEB3B;
+    }
+
+    /* Header sticky behavior */
+    header.sticky {
+        position: fixed;
+        left: 0;
+        right: 0;
+        height: 3rem;
+        z-index: 10;
+    }
+
+    header.sticky .content {
+        padding: 1rem 2.5rem;
+    }
+
+    header.sticky ~ #source {
+        padding-top: 5rem;
+    }
+
+    header.sticky h1, header.sticky h2 {
+        font-size: 1.25rem;
+        margin: 0;
+        color: #FFF;
+    }
+
+    /* Code section styles */
+    #source p .n {
+        color: #757575;
+        text-align: right;
+        width: 3.5rem;
+        padding-right: 1em;
+    }
+
+    #source p .t {
+        display: inline-block;
+        width: 100%;
+        padding-left: 1em;
+        border-left: 1px solid #81C784; /* Pastellgrün */
+    }
+
+    #source p .r {
+        position: absolute;
+        top: 0;
+        right: 2.5em;
+        font-family: 'Roboto', sans-serif;
+    }
+
+    /* Button styles for actions */
+    button, input, a.button {
+        padding: 0.75em 1.5em;
+        font-size: 1rem;
+        border-radius: 4px;
+        background-color: #81C784; /* Pastellgrün für Buttons */
+        color: white;
+        border: none;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    button:hover, a.button:hover {
+        background-color: #66BB6A; /* Dunkleres Pastellgrün für Hover */
+    }
+
+    /* Footer styles */
+    footer .content {
+        padding: 0;
+        font-style: italic;
+        color: #757575;
+    }
+
+    /* Form and filter styles */
+    #filter_container #filter {
+        padding: 0.5em 1em;
+        border: 1px solid #ccc;
+        background-color: #fff;
+        color: #333;
+        border-radius: 4px;
+        width: 100%;
+    }
+
+    #filter_container label {
+        color: #757575;
+    }
+
+    /* Scroll marker */
+    #scroll_marker {
+        position: fixed;
+        z-index: 3;
+        right: 0;
+        top: 0;
+        width: 16px;
+        height: 100%;
+        background-color: #f5f5f5;
+        border-left: 1px solid #ddd;
+    }
+
+    #scroll_marker .marker {
+        background-color: #81C784;
+        position: absolute;
+        min-height: 3px;
+        width: 100%;
+    }
+}
